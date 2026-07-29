@@ -1395,25 +1395,7 @@
     let modalImgIndex = 0;
     let currentModalProduct = null;
 
-    // Global exports for onclick handlers
-    window.showCatalog = showCatalog;
-    window.toggleAdmin = toggleAdmin;
-    window.closeLoginModal = closeLoginModal;
-    window.doLogin = doLogin;
-    window.doLogout = doLogout;
-    window.saveProduct = saveProduct;
-    window.editProduct = editProduct;
-    window.cancelEdit = cancelEdit;
-    window.deleteProduct = deleteProduct;
-    window.openProductModal = openProductModal;
-    window.closeProductModal = closeProductModal;
-    window.carouselNav = carouselNav;
-    window.setModalImage = setModalImage;
-    window.shareProduct = shareProduct;
-    window.copyProductLink = copyProductLink;
-    window.waProductLink = waProductLink;
-
-    // WA links
+    // WA links (handlers se exportan al final, tras definir las funciones)
     const genericWa = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent('Hola! Me interesa ver el catálogo.');
     document.getElementById('waFooterLink').href = genericWa;
     document.getElementById('fabWa').href = genericWa;
@@ -2042,7 +2024,7 @@
       renderCatalog();
     }
 
-    window.toggleAdmin = function () {
+    function toggleAdmin() {
       if (auth.currentUser) {
         if (isAdmin) showCatalog();
         else showAdmin();
@@ -2050,7 +2032,25 @@
         document.getElementById('loginModal').classList.add('visible');
         document.getElementById('loginEmail').focus();
       }
-    };
+    }
+
+    // Exportar handlers al scope global (onclick del HTML)
+    window.showCatalog = showCatalog;
+    window.toggleAdmin = toggleAdmin;
+    window.closeLoginModal = closeLoginModal;
+    window.doLogin = doLogin;
+    window.doLogout = doLogout;
+    window.saveProduct = saveProduct;
+    window.editProduct = editProduct;
+    window.cancelEdit = cancelEdit;
+    window.deleteProduct = deleteProduct;
+    window.openProductModal = openProductModal;
+    window.closeProductModal = closeProductModal;
+    window.carouselNav = carouselNav;
+    window.setModalImage = setModalImage;
+    window.shareProduct = shareProduct;
+    window.copyProductLink = copyProductLink;
+    window.waProductLink = waProductLink;
 
     onAuthStateChanged(auth, (user) => {
       const badge = document.getElementById('userBadge');
@@ -2076,6 +2076,12 @@
     document.getElementById('sortSelect').addEventListener('change', (e) => {
       currentSort = e.target.value;
       renderCatalog();
+    });
+
+    // Listener directo (respaldo del onclick)
+    document.getElementById('adminBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleAdmin();
     });
 
     // ---------- INIT ----------
