@@ -174,6 +174,20 @@
       align-items: center;
     }
 
+    .subfilters {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 20px 0;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .subfilters.hidden {
+      display: none;
+    }
+
     .filter-btn {
       padding: 8px 18px;
       border-radius: 999px;
@@ -195,6 +209,30 @@
       background: var(--primary);
       border-color: var(--primary);
       color: white;
+    }
+
+    .subfilter-btn {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px dashed var(--border);
+      background: var(--bg);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .subfilter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .subfilter-btn.active {
+      background: #eff6ff;
+      border-color: var(--primary);
+      border-style: solid;
+      color: var(--primary);
     }
 
     .results-count {
@@ -238,10 +276,15 @@
       cursor: zoom-in;
     }
 
+    .product-image.loaded-bg {
+      background: #f4f6f9;
+      animation: none;
+    }
+
     .product-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       opacity: 0;
       transition: opacity 0.35s, transform 0.4s;
     }
@@ -379,6 +422,9 @@
     .lightbox-overlay img {
       max-width: 100%;
       max-height: 85vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
       border-radius: 12px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     }
@@ -565,6 +611,15 @@
       text-transform: uppercase;
       letter-spacing: 0.04em;
       margin-bottom: 6px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .product-category .sep {
+      color: var(--muted);
+      font-weight: 400;
     }
 
     .product-name {
@@ -865,9 +920,9 @@
     .admin-item img {
       width: 64px;
       height: 64px;
-      object-fit: cover;
-      border-radius: 10px;
+      object-fit: contain;
       background: #f1f5f9;
+      border-radius: 10px;
       flex-shrink: 0;
     }
 
@@ -924,6 +979,168 @@
       border-color: var(--danger);
       color: var(--danger);
       background: #fef2f2;
+    }
+
+    /* CATEGORY MANAGER */
+    .category-manager {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .category-manager h3 {
+      font-size: 1.1rem;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    .cat-add-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .cat-add-row input {
+      flex: 1;
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      background: var(--bg);
+    }
+
+    .cat-add-row input:focus {
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .cat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .cat-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .cat-item-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .cat-item-head strong {
+      font-size: 0.95rem;
+    }
+
+    .cat-item-head button {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .cat-item-head button:hover {
+      border-color: var(--danger);
+      color: var(--danger);
+      background: #fef2f2;
+    }
+
+    .subcat-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .subcat-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 6px 5px 12px;
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    .subcat-chip button {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: none;
+      background: var(--border);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.7rem;
+      line-height: 1;
+    }
+
+    .subcat-chip button:hover {
+      background: var(--danger);
+      color: white;
+    }
+
+    .subcat-add-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .subcat-add-row input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-family: inherit;
+      outline: none;
+      background: var(--bg);
+    }
+
+    .subcat-add-row button {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: white;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .subcat-add-row button:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .cat-empty {
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 10px 0;
     }
 
     .modal-overlay {
@@ -1048,21 +1265,38 @@
       }
 
       .products {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 16px;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 12px;
+        padding: 16px 14px 40px;
       }
 
       .product-info {
-        padding: 14px;
+        padding: 12px;
       }
 
       .product-name {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+      }
+
+      .product-desc {
+        font-size: 0.8rem;
+        margin-bottom: 12px;
+      }
+
+      .price {
+        font-size: 1.05rem;
+      }
+
+      .product-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
       }
 
       .btn-whatsapp {
-        padding: 8px 12px;
+        padding: 9px 12px;
         font-size: 0.8rem;
+        justify-content: center;
       }
 
       .form-grid {
@@ -1090,6 +1324,66 @@
         height: 52px;
         bottom: 16px;
         right: 16px;
+      }
+
+      .zoom-hint {
+        width: 26px;
+        height: 26px;
+        bottom: 8px;
+        right: 8px;
+      }
+
+      .carousel-arrow {
+        opacity: 1;
+        width: 26px;
+        height: 26px;
+        background: rgba(15, 23, 42, 0.35);
+      }
+
+      .lightbox-overlay {
+        padding: 10px;
+      }
+
+      .lightbox-overlay img {
+        max-height: 72vh;
+      }
+
+      .lightbox-arrow {
+        width: 38px;
+        height: 38px;
+      }
+
+      .lightbox-arrow.prev {
+        left: 6px;
+      }
+
+      .lightbox-arrow.next {
+        right: 6px;
+      }
+
+      .lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 36px;
+        height: 36px;
+      }
+
+      .lightbox-counter {
+        bottom: 10px;
+      }
+
+      .cat-add-row {
+        flex-direction: column;
+      }
+
+      .subcat-add-row {
+        flex-direction: column;
+      }
+
+      .filters,
+      .subfilters {
+        padding-left: 14px;
+        padding-right: 14px;
       }
     }
   </style>
@@ -1169,13 +1463,11 @@
   </header>
 
   <div class="catalog-view" id="catalogView">
-    <div class="filters">
+    <div class="filters" id="filtersRow">
       <button class="filter-btn active" data-category="all">Todos</button>
-      <button class="filter-btn" data-category="ropa">Ropa</button>
-      <button class="filter-btn" data-category="calzado">Calzado</button>
-      <button class="filter-btn" data-category="accesorios">Accesorios</button>
       <span class="results-count" id="resultsCount">Cargando...</span>
     </div>
+    <div class="subfilters hidden" id="subfiltersRow"></div>
     <main class="products" id="productsGrid">
       <div class="loading-state">
         <div class="spinner"></div>
@@ -1198,6 +1490,17 @@
       Los cambios se guardan automáticamente en la base de datos y se ven al instante en todos los dispositivos.
     </div>
 
+    <div class="category-manager">
+      <h3>Categorías y subcategorías</h3>
+      <div class="cat-add-row">
+        <input type="text" id="newCategoryInput" placeholder="Nombre de la nueva categoría (ej: Ropa)">
+        <button class="btn btn-primary" onclick="addCategory()">+ Agregar categoría</button>
+      </div>
+      <div class="cat-list" id="catList">
+        <p class="cat-empty">Cargando categorías...</p>
+      </div>
+    </div>
+
     <div class="admin-form">
       <h3 id="formTitle">Agregar producto</h3>
       <input type="hidden" id="editId">
@@ -1208,11 +1511,11 @@
         </div>
         <div class="form-group">
           <label>Categoría *</label>
-          <select id="fCategory">
-            <option value="ropa">Ropa</option>
-            <option value="calzado">Calzado</option>
-            <option value="accesorios">Accesorios</option>
-          </select>
+          <select id="fCategory" onchange="onFormCategoryChange()"></select>
+        </div>
+        <div class="form-group" id="fSubcategoryGroup" style="display:none">
+          <label>Subcategoría</label>
+          <select id="fSubcategory"></select>
         </div>
         <div class="form-group">
           <label>Precio *</label>
@@ -1267,7 +1570,7 @@
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
     import {
       getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc,
-      doc, onSnapshot, query, orderBy
+      doc, onSnapshot, query, orderBy, arrayUnion, arrayRemove
     } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
     import {
       getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged
@@ -1303,10 +1606,13 @@
     const auth = getAuth(app);
 
     let products = [];
+    let categories = []; // [{id, name, subcategories: []}]
     let isAdmin = false;
     let currentCategory = 'all';
+    let currentSubcategory = 'all';
     let currentSearch = '';
-    let unsubscribe = null;
+    let unsubscribeProducts = null;
+    let unsubscribeCategories = null;
 
     // Exponer funciones al scope global (para los onclick del HTML)
     window.showCatalog = showCatalog;
@@ -1321,6 +1627,11 @@
     window.shareCatalog = shareCatalog;
     window.openLightbox = openLightbox;
     window.closeLightbox = closeLightbox;
+    window.onFormCategoryChange = onFormCategoryChange;
+    window.addCategory = addCategory;
+    window.deleteCategory = deleteCategory;
+    window.addSubcategory = addSubcategory;
+    window.deleteSubcategory = deleteSubcategory;
 
     document.getElementById('waFooterLink').href = 'https://wa.me/' + WHATSAPP_NUMBER;
     document.getElementById('waFloat').href =
@@ -1440,11 +1751,71 @@
         .replace(/>/g, '&gt;');
     }
 
+    function escapeHtml(str) {
+      return escapeAttr(str);
+    }
+
     // Compatible con productos viejos (campo "image" único) y nuevos (arreglo "images")
     function getProductImages(p) {
       if (Array.isArray(p.images) && p.images.length) return p.images;
       if (p.image) return [p.image];
       return ['https://placehold.co/500x500/e2e8f0/64748b?text=Sin+imagen'];
+    }
+
+    // ---------- CATEGORÍAS: FILTROS DEL CATÁLOGO ----------
+    function renderFilters() {
+      const row = document.getElementById('filtersRow');
+      const resultsCountEl = document.getElementById('resultsCount');
+
+      // Reconstruir botones de categoría (mantener "Todos" + dinámicas)
+      const catButtonsHtml = categories.map(c => `
+        <button class="filter-btn${currentCategory === c.name ? ' active' : ''}" data-category="${escapeAttr(c.name)}">${escapeHtml(c.name)}</button>
+      `).join('');
+
+      row.innerHTML = `
+        <button class="filter-btn${currentCategory === 'all' ? ' active' : ''}" data-category="all">Todos</button>
+        ${catButtonsHtml}
+      `;
+      row.appendChild(resultsCountEl);
+
+      row.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentCategory = btn.dataset.category;
+          currentSubcategory = 'all';
+          renderFilters();
+          renderSubfilters();
+          renderCatalog();
+        });
+      });
+
+      renderSubfilters();
+    }
+
+    function renderSubfilters() {
+      const wrap = document.getElementById('subfiltersRow');
+      const cat = categories.find(c => c.name === currentCategory);
+
+      if (!cat || !Array.isArray(cat.subcategories) || cat.subcategories.length === 0) {
+        wrap.classList.add('hidden');
+        wrap.innerHTML = '';
+        return;
+      }
+
+      wrap.classList.remove('hidden');
+      wrap.innerHTML = `
+        <button class="subfilter-btn${currentSubcategory === 'all' ? ' active' : ''}" data-sub="all">Todas</button>
+        ${cat.subcategories.map(s => `
+          <button class="subfilter-btn${currentSubcategory === s ? ' active' : ''}" data-sub="${escapeAttr(s)}">${escapeHtml(s)}</button>
+        `).join('')}
+      `;
+
+      wrap.querySelectorAll('.subfilter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentSubcategory = btn.dataset.sub;
+          renderSubfilters();
+          renderCatalog();
+        });
+      });
     }
 
     function renderCatalog() {
@@ -1453,10 +1824,11 @@
 
       const filtered = products.filter(p => {
         const matchCat = currentCategory === 'all' || p.category === currentCategory;
+        const matchSub = currentCategory === 'all' || currentSubcategory === 'all' || p.subcategory === currentSubcategory;
         const matchSearch = !currentSearch ||
           p.name.toLowerCase().includes(currentSearch) ||
           (p.description || '').toLowerCase().includes(currentSearch);
-        return matchCat && matchSearch;
+        return matchCat && matchSub && matchSearch;
       });
 
       resultsCount.textContent = filtered.length + (filtered.length === 1 ? ' producto' : ' productos');
@@ -1503,13 +1875,17 @@
              </div>`
           : '';
 
+        const categoryLineHtml = p.subcategory
+          ? `${escapeHtml(p.category)} <span class="sep">›</span> ${escapeHtml(p.subcategory)}`
+          : escapeHtml(p.category);
+
         return `
           <article class="product-card">
             <div class="product-image" data-images="${imagesJson}" data-index="0"
                  onclick="openLightbox(JSON.parse(this.dataset.images), parseInt(this.dataset.index))">
               <img src="${images[0]}" alt="${p.name}" loading="lazy"
-                   onload="this.classList.add('loaded')"
-                   onerror="this.src='https://placehold.co/500x500/e2e8f0/64748b?text=Sin+imagen'; this.classList.add('loaded')">
+                   onload="this.classList.add('loaded'); this.parentElement.classList.add('loaded-bg')"
+                   onerror="this.src='https://placehold.co/500x500/e2e8f0/64748b?text=Sin+imagen'; this.classList.add('loaded'); this.parentElement.classList.add('loaded-bg')">
               ${badgeHtml}
               ${countBadgeHtml}
               ${arrowsHtml}
@@ -1524,7 +1900,7 @@
               </div>
             </div>
             <div class="product-info">
-              <div class="product-category">${p.category}</div>
+              <div class="product-category">${categoryLineHtml}</div>
               <h3 class="product-name">${p.name}</h3>
               <p class="product-desc">${p.description || ''}</p>
               <div class="product-footer">
@@ -1553,12 +1929,13 @@
 
       list.innerHTML = products.map(p => {
         const images = getProductImages(p);
+        const catLabel = p.subcategory ? `${p.category} › ${p.subcategory}` : p.category;
         return `
         <div class="admin-item">
           <img src="${images[0]}" alt="" onerror="this.src='https://placehold.co/64x64/e2e8f0/64748b?text=?'">
           <div class="admin-item-info">
             <h4>${p.name}</h4>
-            <p>${p.category} · ${p.badge ? (p.badge === 'new' ? 'Nuevo' : 'Oferta') : 'Sin badge'} · ${images.length} ${images.length === 1 ? 'foto' : 'fotos'}</p>
+            <p>${catLabel} · ${p.badge ? (p.badge === 'new' ? 'Nuevo' : 'Oferta') : 'Sin badge'} · ${images.length} ${images.length === 1 ? 'foto' : 'fotos'}</p>
           </div>
           <div class="admin-item-price">${formatPrice(p.price)}</div>
           <div class="admin-item-actions">
@@ -1580,13 +1957,144 @@
       }).join('');
     }
 
+    // ---------- CATEGORÍAS: ADMIN ----------
+    function renderCategoryManager() {
+      const list = document.getElementById('catList');
+
+      if (categories.length === 0) {
+        list.innerHTML = '<p class="cat-empty">Aún no hay categorías. Agrega la primera arriba.</p>';
+      } else {
+        list.innerHTML = categories.map(c => `
+          <div class="cat-item">
+            <div class="cat-item-head">
+              <strong>${escapeHtml(c.name)}</strong>
+              <button title="Eliminar categoría" onclick="deleteCategory('${c.id}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="subcat-chips">
+              ${(c.subcategories || []).map(s => `
+                <span class="subcat-chip">${escapeHtml(s)}
+                  <button title="Quitar" onclick="deleteSubcategory('${c.id}', '${escapeAttr(s).replace(/'/g, "\\'")}')">&times;</button>
+                </span>
+              `).join('') || '<span style="color:var(--muted);font-size:0.82rem;">Sin subcategorías</span>'}
+            </div>
+            <div class="subcat-add-row">
+              <input type="text" id="subInput_${c.id}" placeholder="Nueva subcategoría">
+              <button onclick="addSubcategory('${c.id}')">+ Agregar</button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      populateCategorySelect();
+    }
+
+    function populateCategorySelect() {
+      const select = document.getElementById('fCategory');
+      const prevValue = select.value;
+      select.innerHTML = categories.map(c => `<option value="${escapeAttr(c.name)}">${escapeHtml(c.name)}</option>`).join('');
+      if (categories.some(c => c.name === prevValue)) {
+        select.value = prevValue;
+      }
+      onFormCategoryChange();
+    }
+
+    function onFormCategoryChange() {
+      const select = document.getElementById('fCategory');
+      const subGroup = document.getElementById('fSubcategoryGroup');
+      const subSelect = document.getElementById('fSubcategory');
+      const cat = categories.find(c => c.name === select.value);
+      const subs = cat && Array.isArray(cat.subcategories) ? cat.subcategories : [];
+
+      if (subs.length === 0) {
+        subGroup.style.display = 'none';
+        subSelect.innerHTML = '';
+      } else {
+        subGroup.style.display = '';
+        subSelect.innerHTML = '<option value="">Ninguna</option>' +
+          subs.map(s => `<option value="${escapeAttr(s)}">${escapeHtml(s)}</option>`).join('');
+      }
+    }
+
+    async function addCategory() {
+      const input = document.getElementById('newCategoryInput');
+      const name = input.value.trim();
+      if (!name) {
+        showToast('Escribe un nombre de categoría', 'error');
+        return;
+      }
+      if (categories.some(c => c.name.toLowerCase() === name.toLowerCase())) {
+        showToast('Esa categoría ya existe', 'error');
+        return;
+      }
+      try {
+        await addDoc(collection(db, 'categories'), { name, subcategories: [], createdAt: new Date().toISOString() });
+        input.value = '';
+        showToast('Categoría agregada', 'success');
+      } catch (err) {
+        console.error(err);
+        showToast('Error al agregar categoría: ' + err.message, 'error');
+      }
+    }
+
+    async function deleteCategory(id) {
+      const cat = categories.find(c => c.id === id);
+      const inUse = products.some(p => p.category === (cat && cat.name));
+      if (inUse && !confirm('Hay productos usando esta categoría. ¿Eliminarla de todas formas?')) return;
+      if (!inUse && !confirm('¿Eliminar esta categoría y sus subcategorías?')) return;
+      try {
+        await deleteDoc(doc(db, 'categories', id));
+        showToast('Categoría eliminada', 'success');
+      } catch (err) {
+        console.error(err);
+        showToast('Error al eliminar categoría: ' + err.message, 'error');
+      }
+    }
+
+    async function addSubcategory(catId) {
+      const input = document.getElementById('subInput_' + catId);
+      const name = input.value.trim();
+      if (!name) {
+        showToast('Escribe un nombre de subcategoría', 'error');
+        return;
+      }
+      const cat = categories.find(c => c.id === catId);
+      if (cat && (cat.subcategories || []).some(s => s.toLowerCase() === name.toLowerCase())) {
+        showToast('Esa subcategoría ya existe', 'error');
+        return;
+      }
+      try {
+        await updateDoc(doc(db, 'categories', catId), { subcategories: arrayUnion(name) });
+        input.value = '';
+        showToast('Subcategoría agregada', 'success');
+      } catch (err) {
+        console.error(err);
+        showToast('Error al agregar subcategoría: ' + err.message, 'error');
+      }
+    }
+
+    async function deleteSubcategory(catId, name) {
+      if (!confirm('¿Eliminar esta subcategoría?')) return;
+      try {
+        await updateDoc(doc(db, 'categories', catId), { subcategories: arrayRemove(name) });
+        showToast('Subcategoría eliminada', 'success');
+      } catch (err) {
+        console.error(err);
+        showToast('Error al eliminar subcategoría: ' + err.message, 'error');
+      }
+    }
+
     // ---------- FIRESTORE: cargar en tiempo real ----------
     function startListening() {
-      if (unsubscribe) unsubscribe();
+      if (unsubscribeProducts) unsubscribeProducts();
+      if (unsubscribeCategories) unsubscribeCategories();
 
-      const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
-
-      unsubscribe = onSnapshot(q, (snapshot) => {
+      const qProducts = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
+      unsubscribeProducts = onSnapshot(qProducts, (snapshot) => {
         products = snapshot.docs.map(d => ({
           id: d.id,
           ...d.data()
@@ -1600,6 +2108,17 @@
             <p>Error al cargar productos.<br>Revisa la configuración de Firebase.</p>
           </div>`;
         showToast('Error de conexión con Firebase', 'error');
+      });
+
+      const qCategories = query(collection(db, 'categories'), orderBy('name'));
+      unsubscribeCategories = onSnapshot(qCategories, (snapshot) => {
+        categories = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+        renderFilters();
+        renderCatalog();
+        if (isAdmin) renderCategoryManager();
+      }, (error) => {
+        console.error('Error escuchando categorías:', error);
+        showToast('Error al cargar categorías', 'error');
       });
     }
 
@@ -1653,6 +2172,7 @@
     async function saveProduct() {
       const name = document.getElementById('fName').value.trim();
       const category = document.getElementById('fCategory').value;
+      const subcategory = document.getElementById('fSubcategory').value || null;
       const price = parseFloat(document.getElementById('fPrice').value);
       const oldPriceVal = document.getElementById('fOldPrice').value;
       const oldPrice = oldPriceVal ? parseFloat(oldPriceVal) : null;
@@ -1661,8 +2181,8 @@
       const badge = document.getElementById('fBadge').value || null;
       const editId = document.getElementById('editId').value;
 
-      if (!name || !price || isNaN(price) || images.length === 0) {
-        showToast('Completa nombre, precio y al menos una imagen', 'error');
+      if (!name || !category || !price || isNaN(price) || images.length === 0) {
+        showToast('Completa nombre, categoría, precio y al menos una imagen', 'error');
         return;
       }
 
@@ -1673,13 +2193,13 @@
       try {
         if (editId) {
           await updateDoc(doc(db, 'products', editId), {
-            name, category, price, oldPrice, images, image: images[0], description, badge,
+            name, category, subcategory, price, oldPrice, images, image: images[0], description, badge,
             updatedAt: new Date().toISOString()
           });
           showToast('Producto actualizado', 'success');
         } else {
           await addDoc(collection(db, 'products'), {
-            name, category, price, oldPrice, images, image: images[0], description, badge,
+            name, category, subcategory, price, oldPrice, images, image: images[0], description, badge,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString()
           });
@@ -1702,6 +2222,8 @@
       document.getElementById('editId').value = p.id;
       document.getElementById('fName').value = p.name;
       document.getElementById('fCategory').value = p.category;
+      onFormCategoryChange();
+      document.getElementById('fSubcategory').value = p.subcategory || '';
       document.getElementById('fPrice').value = p.price;
       document.getElementById('fOldPrice').value = p.oldPrice || '';
       setImagesInForm(getProductImages(p));
@@ -1719,7 +2241,8 @@
     function resetForm() {
       document.getElementById('editId').value = '';
       document.getElementById('fName').value = '';
-      document.getElementById('fCategory').value = 'ropa';
+      if (categories.length) document.getElementById('fCategory').value = categories[0].name;
+      onFormCategoryChange();
       document.getElementById('fPrice').value = '';
       document.getElementById('fOldPrice').value = '';
       setImagesInForm([]);
@@ -1807,6 +2330,7 @@
       document.getElementById('adminBtnText').textContent = 'Admin';
       document.getElementById('footer').style.display = 'none';
       renderAdminList();
+      renderCategoryManager();
     }
 
     function showCatalog() {
@@ -1832,13 +2356,7 @@
       }
     });
 
-    // Si ya hay sesión, el botón Admin entra directo
-    document.getElementById('adminBtn').addEventListener('click', (e) => {
-      // El onclick ya llama toggleAdmin, pero si hay user, toggleAdmin verá isAdmin
-    });
-
     // Override toggleAdmin para usar sesión existente
-    const originalToggle = window.toggleAdmin;
     window.toggleAdmin = function () {
       if (auth.currentUser) {
         if (isAdmin) {
@@ -1863,17 +2381,9 @@
       renderCatalog();
     });
 
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentCategory = btn.dataset.category;
-        renderCatalog();
-      });
-    });
-
     // ---------- INICIAR ----------
     setImagesInForm([]);
+    renderFilters();
     startListening();
   </script>
 </body>
